@@ -48,23 +48,16 @@ margin:auto;
 background:var(--card);
 padding:25px;
 border-radius:12px;
-backdrop-filter:blur(10px);
 }
 
 .resume-header h1{
 margin:0;
 font-size:36px;
-letter-spacing:1px;
 }
 
 .resume-header h3{
 margin:10px 0;
-font-weight:normal;
 color:var(--accent);
-}
-
-.resume-header p{
-margin:6px 0;
 }
 
 section{
@@ -112,31 +105,47 @@ cursor:pointer;
 position:fixed;
 bottom:80px;
 right:20px;
-width:320px;
-background:var(--card);
-padding:15px;
+width:350px;
+background:#111827;
 border-radius:12px;
 display:none;
-max-height:400px;
-overflow-y:auto;
+flex-direction:column;
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
+overflow:hidden;
 }
 
 .chat-header{
+padding:12px;
+background:#1f2937;
 font-weight:bold;
-margin-bottom:10px;
 }
 
 .chat-messages{
+height:260px;
+overflow-y:auto;
+padding:10px;
 font-size:14px;
-margin-bottom:10px;
 }
 
-.chat-input{
-width:100%;
-padding:8px;
-margin-top:8px;
-border-radius:6px;
+.chat-input-area{
+display:flex;
+border-top:1px solid #333;
+}
+
+.chat-input-area input{
+flex:1;
+padding:10px;
 border:none;
+background:#0f172a;
+color:white;
+outline:none;
+}
+
+.chat-input-area button{
+padding:10px 15px;
+border:none;
+background:var(--accent);
+cursor:pointer;
 }
 </style>
 </head>
@@ -154,8 +163,8 @@ border:none;
 
 <header>
 <div class="resume-header">
-<h1><strong>RAVIKANT BHASKAR</strong></h1>
-<h3><strong>Enterprise Network Engineer | Cloud Transition & AI Automation Enthusiast</strong></h3>
+<h1>RAVIKANT BHASKAR</h1>
+<h3>Enterprise Network Engineer | Cloud Transition & AI Automation Enthusiast</h3>
 <p><strong>Chennai, India | +91-9363906871 | ravikantbhashkar01@gmail.com</strong></p>
 <p>
 <strong>LinkedIn:</strong> 
@@ -177,37 +186,35 @@ Download Resume
 <section id="about">
 <h2>About Me</h2>
 <div class="card">
-<p>
 Enterprise Network Engineer with 5+ years of experience in Microsoft Azure,
 VMware virtualization, infrastructure modernization, and AI-driven automation solutions.
-</p>
 </div>
 </section>
 
 <section id="skills">
 <h2>Technical Skills</h2>
 <div class="card">
-<p><strong>Azure Administration</strong></p>
-<p><strong>VMware & Virtualization</strong></p>
-<p><strong>Enterprise Networking</strong></p>
-<p><strong>Python Automation</strong></p>
-<p><strong>AI Integration</strong></p>
+<strong>Azure Administration</strong><br>
+<strong>VMware & Virtualization</strong><br>
+<strong>Enterprise Networking</strong><br>
+<strong>Python Automation</strong><br>
+<strong>AI Integration</strong>
 </div>
 </section>
 
 <section id="projects">
 <h2>Projects</h2>
 <div class="card">
-<p>🚀 Azure VM Monitoring Automation</p>
-<p>🚀 Infrastructure Health Check Tool</p>
-<p>🚀 AI-powered Cloud Dashboard</p>
+🚀 Azure VM Monitoring Automation<br>
+🚀 Infrastructure Health Check Tool<br>
+🚀 AI-powered Cloud Dashboard
 </div>
 </section>
 
 <section id="contact">
 <h2>Contact</h2>
 <div class="card">
-<p>Email: ravikantbhashkar01@gmail.com</p>
+Email: ravikantbhashkar01@gmail.com<br>
 <a href="Ravikant_Bhaskar_Resume.pdf" class="btn" target="_blank">
 Download Resume
 </a>
@@ -215,32 +222,32 @@ Download Resume
 </section>
 
 <footer>
-<p>© 2026 Ravikant Bhaskar | All Rights Reserved</p>
+© 2026 Ravikant Bhaskar | All Rights Reserved
 </footer>
 
-<!-- Chatbot -->
+<!-- Chatbot Button -->
 <div class="chat-btn" onclick="toggleChat()">
 <i class="fas fa-robot"></i>
 </div>
 
+<!-- Chatbot Box -->
 <div class="chat-box" id="chatBox">
 <div class="chat-header">Ravikant's AI Assistant</div>
+
 <div class="chat-messages" id="chatMessages">
 <p><strong>Ravikant'Bot:</strong> Hello and welcome. I'm Ravikant's AI assistant, here to provide insights about his cloud, infrastructure, and AI expertise.</p>
 </div>
-<input type="text" id="chatInput" class="chat-input" placeholder="Ask something..." onkeypress="handleKey(event)">
+
+<div class="chat-input-area">
+<input type="text" id="chatInput" placeholder="Type your question..." />
+<button onclick="sendMessage()">Send</button>
+</div>
 </div>
 
 <script>
 function toggleChat(){
-let box=document.getElementById("chatBox");
-box.style.display= box.style.display==="block"?"none":"block";
-}
-
-function handleKey(e){
-if(e.key==="Enter"){
-sendMessage();
-}
+const box=document.getElementById("chatBox");
+box.style.display = box.style.display==="flex" ? "none" : "flex";
 }
 
 async function sendMessage(){
@@ -252,8 +259,12 @@ const chat=document.getElementById("chatMessages");
 chat.innerHTML += "<p><strong>You:</strong> "+message+"</p>";
 input.value="";
 
-chat.innerHTML += "<p><strong>Ravikant'Bot:</strong> Thinking...</p>";
+const thinking=document.createElement("p");
+thinking.innerHTML="<strong>Ravikant'Bot:</strong> Thinking...";
+chat.appendChild(thinking);
+chat.scrollTop=chat.scrollHeight;
 
+try{
 const response = await fetch("https://icy-queen-91fa.ravikantbhaskar01.workers.dev",{
 method:"POST",
 headers:{"Content-Type":"application/json"},
@@ -261,8 +272,12 @@ body:JSON.stringify({message})
 });
 
 const data=await response.json();
+thinking.innerHTML="<strong>Ravikant'Bot:</strong> "+data.reply;
 
-chat.innerHTML = chat.innerHTML.replace("Thinking...", data.reply);
+}catch{
+thinking.innerHTML="<strong>Ravikant'Bot:</strong> AI service unavailable.";
+}
+
 chat.scrollTop=chat.scrollHeight;
 }
 </script>
