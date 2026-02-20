@@ -3,47 +3,88 @@
 <head>
     <title>Ravikant Bhaskar | Cloud & Infrastructure Engineer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <style>
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
+            font-family: Arial, sans-serif;
             background-color: #0f172a;
             color: #f1f5f9;
-        }
-
-        /* Sticky Navbar */
-        nav {
-            position: sticky;
-            top: 0;
-            background: #020617;
-            padding: 15px;
-            text-align: center;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-        }
-
-        nav a {
-            color: #38bdf8;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            color: #ffffff;
         }
 
         html {
             scroll-behavior: smooth;
         }
 
+        /* Navbar */
+        nav {
+            position: sticky;
+            top: 0;
+            background: #020617;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .nav-links a.active {
+            color: #ffffff;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #38bdf8;
+            left: 0;
+            bottom: -5px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hamburger */
+        .menu-toggle {
+            display: none;
+            font-size: 22px;
+            cursor: pointer;
+            color: #38bdf8;
+        }
+
+        /* Hero Section */
         header {
             text-align: center;
-            padding: 80px 20px;
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            animation: fadeIn 1.2s ease-in-out;
         }
 
         h1 {
-            font-size: 40px;
+            font-size: 42px;
             margin-bottom: 10px;
         }
 
@@ -55,6 +96,7 @@
             padding: 60px 20px;
             max-width: 900px;
             margin: auto;
+            animation: fadeUp 1s ease-in-out;
         }
 
         .card {
@@ -62,11 +104,11 @@
             padding: 20px;
             margin: 15px 0;
             border-radius: 8px;
+            transition: transform 0.3s;
         }
 
-        a {
-            color: #38bdf8;
-            text-decoration: none;
+        .card:hover {
+            transform: translateY(-5px);
         }
 
         .btn {
@@ -77,6 +119,17 @@
             border-radius: 5px;
             margin-top: 15px;
             font-weight: bold;
+            text-decoration: none;
+        }
+
+        .social-icons {
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            color: #38bdf8;
+            margin: 0 10px;
+            font-size: 22px;
         }
 
         footer {
@@ -85,27 +138,63 @@
             background: #020617;
             margin-top: 40px;
         }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        @keyframes fadeUp {
+            from {opacity: 0; transform: translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        /* Mobile */
+        @media(max-width:768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: #020617;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 200px;
+                padding: 20px;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
 
-<!-- Navbar -->
 <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+    <div class="logo">Ravikant</div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </div>
+    <div class="nav-links" id="navLinks">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#contact" class="nav-link">Contact</a>
+    </div>
 </nav>
 
-<!-- Header -->
 <header id="home">
     <h1>Ravikant Bhaskar</h1>
     <p>Cloud & Infrastructure Engineer</p>
     <p>Azure | VMware | AI Integration | Web Technologies</p>
 </header>
 
-<!-- About -->
 <section id="about">
     <h2>About Me</h2>
     <div class="card">
@@ -113,7 +202,6 @@
     </div>
 </section>
 
-<!-- Skills -->
 <section id="skills">
     <h2>Technical Skills</h2>
     <div class="card">
@@ -128,7 +216,6 @@
     </div>
 </section>
 
-<!-- Projects -->
 <section id="projects">
     <h2>Projects</h2>
     <div class="card">
@@ -138,18 +225,48 @@
     </div>
 </section>
 
-<!-- Contact -->
 <section id="contact">
     <h2>Contact</h2>
     <div class="card">
         <p>Email: ravikantbhashkar01@gmail.com</p>
         <a href="Ravikant_Bhaskar_Resume.pdf" class="btn" target="_blank">Download Resume</a>
+
+        <div class="social-icons">
+            <a href="https://linkedin.com/in/YOUR-LINKEDIN" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/ravikantbhashkar01-ctrl" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
     </div>
 </section>
 
 <footer>
     <p>© 2026 Ravikant Bhaskar | All Rights Reserved</p>
 </footer>
+
+<script>
+    function toggleMenu() {
+        document.getElementById("navLinks").classList.toggle("show");
+    }
+
+    const sections = document.querySelectorAll("section, header");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    window.addEventListener("scroll", () => {
+        let current = "";
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            if (pageYOffset >= sectionTop) {
+                current = section.getAttribute("id");
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === "#" + current) {
+                link.classList.add("active");
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
