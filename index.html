@@ -96,6 +96,7 @@ text-align:center;
 padding:20px;
 }
 
+/* Chatbot */
 .chat-btn{
 position:fixed;
 bottom:20px;
@@ -116,11 +117,26 @@ background:var(--card);
 padding:15px;
 border-radius:12px;
 display:none;
+max-height:400px;
+overflow-y:auto;
 }
 
 .chat-header{
 font-weight:bold;
 margin-bottom:10px;
+}
+
+.chat-messages{
+font-size:14px;
+margin-bottom:10px;
+}
+
+.chat-input{
+width:100%;
+padding:8px;
+margin-top:8px;
+border-radius:6px;
+border:none;
 }
 </style>
 </head>
@@ -138,20 +154,14 @@ margin-bottom:10px;
 
 <header>
 <div class="resume-header">
-
 <h1><strong>RAVIKANT BHASKAR</strong></h1>
-
 <h3><strong>Enterprise Network Engineer | Cloud Transition & AI Automation Enthusiast</strong></h3>
-
 <p><strong>Chennai, India | +91-9363906871 | ravikantbhashkar01@gmail.com</strong></p>
-
 <p>
-<strong>
-LinkedIn:</strong> 
+<strong>LinkedIn:</strong> 
 <a href="https://www.linkedin.com/in/r-bhaskar-9759292b1" target="_blank">
 www.linkedin.com/in/r-bhaskar-9759292b1
-</a>
-<br>
+</a><br>
 <strong>GitHub:</strong> 
 <a href="https://ravikantbhashkar01-ctrl.github.io/" target="_blank">
 https://ravikantbhashkar01-ctrl.github.io/
@@ -161,7 +171,6 @@ https://ravikantbhashkar01-ctrl.github.io/
 <a href="Ravikant_Bhaskar_Resume.pdf" class="btn" target="_blank">
 Download Resume
 </a>
-
 </div>
 </header>
 
@@ -199,11 +208,9 @@ VMware virtualization, infrastructure modernization, and AI-driven automation so
 <h2>Contact</h2>
 <div class="card">
 <p>Email: ravikantbhashkar01@gmail.com</p>
-
 <a href="Ravikant_Bhaskar_Resume.pdf" class="btn" target="_blank">
 Download Resume
 </a>
-
 </div>
 </section>
 
@@ -218,15 +225,45 @@ Download Resume
 
 <div class="chat-box" id="chatBox">
 <div class="chat-header">Ravikant's AI Assistant</div>
-<p>
-<strong>Ravikant'Bot:</strong> Hello and welcome. I'm Ravikant's AI assistant, here to provide insights about his cloud, infrastructure, and AI expertise.
-</p>
+<div class="chat-messages" id="chatMessages">
+<p><strong>Ravikant'Bot:</strong> Hello and welcome. I'm Ravikant's AI assistant, here to provide insights about his cloud, infrastructure, and AI expertise.</p>
+</div>
+<input type="text" id="chatInput" class="chat-input" placeholder="Ask something..." onkeypress="handleKey(event)">
 </div>
 
 <script>
 function toggleChat(){
 let box=document.getElementById("chatBox");
 box.style.display= box.style.display==="block"?"none":"block";
+}
+
+function handleKey(e){
+if(e.key==="Enter"){
+sendMessage();
+}
+}
+
+async function sendMessage(){
+const input=document.getElementById("chatInput");
+const message=input.value.trim();
+if(!message) return;
+
+const chat=document.getElementById("chatMessages");
+chat.innerHTML += "<p><strong>You:</strong> "+message+"</p>";
+input.value="";
+
+chat.innerHTML += "<p><strong>Ravikant'Bot:</strong> Thinking...</p>";
+
+const response = await fetch("https://icy-queen-91fa.ravikantbhaskar01.workers.dev",{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({message})
+});
+
+const data=await response.json();
+
+chat.innerHTML = chat.innerHTML.replace("Thinking...", data.reply);
+chat.scrollTop=chat.scrollHeight;
 }
 </script>
 
