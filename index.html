@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Ravikant Bhaskar | Cloud & Infrastructure Engineer</title>
+<title>Ravikant Bhaskar | Enterprise Network Engineer</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -13,95 +13,89 @@
 --accent:#38bdf8;
 }
 
-.light-mode{
---bg:#f4f4f4;
---card:rgba(255,255,255,0.7);
---text:#111;
---accent:#0077ff;
-}
-
 body{
 margin:0;
 font-family:Arial,sans-serif;
 background:var(--bg);
 color:var(--text);
-transition:0.4s;
 }
-
-html{scroll-behavior:smooth;}
 
 nav{
 position:sticky;
 top:0;
-background:rgba(2,6,23,0.8);
-backdrop-filter:blur(10px);
+background:#020617;
+padding:15px 25px;
 display:flex;
 justify-content:space-between;
-align-items:center;
-padding:15px 25px;
-z-index:1000;
 }
 
-.logo{font-weight:bold;color:var(--accent);}
-
-.nav-links{display:flex;gap:20px;}
-.nav-links a{text-decoration:none;color:var(--accent);font-weight:bold;}
-.nav-links a:hover{color:#fff;}
-
-.toggle-btn{cursor:pointer;color:var(--accent);}
+nav a{
+color:var(--accent);
+text-decoration:none;
+margin-left:15px;
+font-weight:bold;
+}
 
 header{
 text-align:center;
-padding:100px 20px;
+padding:80px 20px;
 background:linear-gradient(135deg,#1e293b,#0f172a);
 }
 
-h1{font-size:42px;margin-bottom:10px;}
-h2{color:var(--accent);}
+.resume-header{
+max-width:900px;
+margin:auto;
+background:var(--card);
+padding:25px;
+border-radius:12px;
+backdrop-filter:blur(10px);
+}
 
-section{padding:60px 20px;max-width:900px;margin:auto;}
+.resume-header h1{
+margin:0;
+font-size:36px;
+letter-spacing:1px;
+}
+
+.resume-header h3{
+margin:10px 0;
+font-weight:normal;
+color:var(--accent);
+}
+
+.resume-header p{
+margin:6px 0;
+}
+
+section{
+padding:60px 20px;
+max-width:900px;
+margin:auto;
+}
 
 .card{
 background:var(--card);
-backdrop-filter:blur(12px);
-border-radius:12px;
 padding:20px;
+border-radius:12px;
 margin:20px 0;
-box-shadow:0 8px 32px rgba(0,0,0,0.3);
-transition:0.3s;
 }
-
-.card:hover{transform:translateY(-6px);}
 
 .btn{
 display:inline-block;
 padding:10px 20px;
 background:var(--accent);
 color:#000;
-border-radius:5px;
+border-radius:6px;
 text-decoration:none;
-margin-top:15px;
 font-weight:bold;
+margin-top:15px;
 }
 
-.skill{margin:15px 0;}
-.progress{background:#222;border-radius:20px;overflow:hidden;}
-.progress-bar{
-height:10px;
-width:0;
-background:var(--accent);
-transition:width 1.5s ease;
+footer{
+text-align:center;
+padding:20px;
 }
 
-.social-icons a{
-color:var(--accent);
-font-size:22px;
-margin:0 10px;
-}
-
-footer{text-align:center;padding:20px;}
-
-/* Chatbot */
 .chat-btn{
 position:fixed;
 bottom:20px;
@@ -119,81 +113,76 @@ bottom:80px;
 right:20px;
 width:320px;
 background:var(--card);
-backdrop-filter:blur(12px);
-border-radius:12px;
 padding:15px;
+border-radius:12px;
 display:none;
-box-shadow:0 10px 25px rgba(0,0,0,0.5);
 }
 
 .chat-header{
 font-weight:bold;
 margin-bottom:10px;
 }
-
-.chat-message{
-font-size:14px;
-line-height:1.4;
-}
-
-@media(max-width:768px){
-.nav-links{display:none;}
-}
 </style>
 </head>
 <body>
 
 <nav>
-<div class="logo">Ravikant</div>
-<div class="nav-links">
-<a href="#home">Home</a>
+<div><strong>Ravikant</strong></div>
+<div>
 <a href="#about">About</a>
 <a href="#skills">Skills</a>
 <a href="#projects">Projects</a>
 <a href="#contact">Contact</a>
 </div>
-<div class="toggle-btn" onclick="toggleTheme()">
-<i class="fas fa-moon"></i>
-</div>
 </nav>
 
-<header id="home">
-<h1>Ravikant Bhaskar</h1>
-<p>Cloud & Infrastructure Engineer</p>
-<p>Azure | VMware | AI Integration | Web Technologies</p>
+<header>
+<div class="resume-header">
+
+<h1><strong>RAVIKANT BHASKAR</strong></h1>
+
+<h3><strong>Enterprise Network Engineer | Cloud Transition & AI Automation Enthusiast</strong></h3>
+
+<p><strong>Chennai, India | +91-9363906871 | ravikantbhashkar01@gmail.com</strong></p>
+
+<p>
+<strong>
+LinkedIn:</strong> 
+<a href="https://www.linkedin.com/in/r-bhaskar-9759292b1" target="_blank">
+www.linkedin.com/in/r-bhaskar-9759292b1
+</a>
+<br>
+<strong>GitHub:</strong> 
+<a href="https://ravikantbhashkar01-ctrl.github.io/" target="_blank">
+https://ravikantbhashkar01-ctrl.github.io/
+</a>
+</p>
+
+<a href="Ravikant_Bhaskar_Resume.pdf" class="btn" target="_blank">
+Download Resume
+</a>
+
+</div>
 </header>
 
 <section id="about">
 <h2>About Me</h2>
 <div class="card">
-<p>Cloud and Infrastructure Engineer with 5+ years of experience in Microsoft Azure, VMware virtualization, and AI-driven automation solutions.</p>
+<p>
+Enterprise Network Engineer with 5+ years of experience in Microsoft Azure,
+VMware virtualization, infrastructure modernization, and AI-driven automation solutions.
+</p>
 </div>
 </section>
 
 <section id="skills">
 <h2>Technical Skills</h2>
 <div class="card">
-
-<div class="skill">
-<p>Azure Administration</p>
-<div class="progress"><div class="progress-bar" data-width="90%"></div></div>
-</div>
-
-<div class="skill">
-<p>VMware & Virtualization</p>
-<div class="progress"><div class="progress-bar" data-width="85%"></div></div>
-</div>
-
-<div class="skill">
-<p>Python Automation</p>
-<div class="progress"><div class="progress-bar" data-width="80%"></div></div>
-</div>
-
-<div class="skill">
-<p>AI Integration</p>
-<div class="progress"><div class="progress-bar" data-width="75%"></div></div>
-</div>
-
+<p><strong>Azure Administration</strong></p>
+<p><strong>VMware & Virtualization</strong></p>
+<p><strong>Enterprise Networking</strong></p>
+<p><strong>Python Automation</strong></p>
+<p><strong>AI Integration</strong></p>
 </div>
 </section>
 
@@ -210,12 +199,11 @@ line-height:1.4;
 <h2>Contact</h2>
 <div class="card">
 <p>Email: ravikantbhashkar01@gmail.com</p>
-<a href="Ravikant_Bhaskar_Resume.pdf" class="btn" target="_blank">Download Resume</a>
 
-<div class="social-icons">
-<a href="https://linkedin.com/in/YOUR-LINKEDIN" target="_blank"><i class="fab fa-linkedin"></i></a>
-<a href="https://github.com/ravikantbhashkar01-ctrl" target="_blank"><i class="fab fa-github"></i></a>
-</div>
+<a href="Ravikant_Bhaskar_Resume.pdf" class="btn" target="_blank">
+Download Resume
+</a>
+
 </div>
 </section>
 
@@ -230,22 +218,12 @@ line-height:1.4;
 
 <div class="chat-box" id="chatBox">
 <div class="chat-header">Ravikant's AI Assistant</div>
-<div class="chat-message">
-<p><strong>Ravikant'Bot:</strong> Hello and welcome. I'm Ravikant's AI assistant, here to provide insights about his cloud, infrastructure, and AI expertise.</p>
-</div>
+<p>
+<strong>Ravikant'Bot:</strong> Hello and welcome. I'm Ravikant's AI assistant, here to provide insights about his cloud, infrastructure, and AI expertise.
+</p>
 </div>
 
 <script>
-function toggleTheme(){
-document.body.classList.toggle("light-mode");
-}
-
-window.addEventListener("load",()=>{
-document.querySelectorAll(".progress-bar").forEach(bar=>{
-bar.style.width = bar.getAttribute("data-width");
-});
-});
-
 function toggleChat(){
 let box=document.getElementById("chatBox");
 box.style.display= box.style.display==="block"?"none":"block";
