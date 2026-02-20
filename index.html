@@ -10,32 +10,65 @@
             background-color: #0f172a;
             color: #f1f5f9;
         }
+
+        /* Sticky Navbar */
+        nav {
+            position: sticky;
+            top: 0;
+            background: #020617;
+            padding: 15px;
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        nav a {
+            color: #38bdf8;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         header {
             text-align: center;
-            padding: 60px 20px;
+            padding: 80px 20px;
         }
+
         h1 {
             font-size: 40px;
             margin-bottom: 10px;
         }
+
         h2 {
             color: #38bdf8;
         }
+
         section {
-            padding: 40px 20px;
+            padding: 60px 20px;
             max-width: 900px;
             margin: auto;
         }
+
         .card {
             background: #1e293b;
             padding: 20px;
             margin: 15px 0;
             border-radius: 8px;
         }
+
         a {
             color: #38bdf8;
             text-decoration: none;
         }
+
         .btn {
             display: inline-block;
             padding: 10px 20px;
@@ -43,7 +76,9 @@
             color: #000;
             border-radius: 5px;
             margin-top: 15px;
+            font-weight: bold;
         }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -54,20 +89,32 @@
 </head>
 <body>
 
-<header>
+<!-- Navbar -->
+<nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<!-- Header -->
+<header id="home">
     <h1>Ravikant Bhaskar</h1>
     <p>Cloud & Infrastructure Engineer</p>
     <p>Azure | VMware | AI Integration | Web Technologies</p>
 </header>
 
-<section>
+<!-- About -->
+<section id="about">
     <h2>About Me</h2>
     <div class="card">
         <p>Cloud and Infrastructure Engineer with 4+ years of experience in Microsoft Azure, VMware virtualization, and modern web technologies. Currently expanding expertise in AI integration and automation-driven cloud solutions.</p>
     </div>
 </section>
 
-<section>
+<!-- Skills -->
+<section id="skills">
     <h2>Technical Skills</h2>
     <div class="card">
         <ul>
@@ -81,7 +128,8 @@
     </div>
 </section>
 
-<section>
+<!-- Projects -->
+<section id="projects">
     <h2>Projects</h2>
     <div class="card">
         <p>🚀 Azure VM Monitoring Automation (Python)</p>
@@ -90,7 +138,8 @@
     </div>
 </section>
 
-<section>
+<!-- Contact -->
+<section id="contact">
     <h2>Contact</h2>
     <div class="card">
         <p>Email: ravikantbhashkar01@gmail.com</p>
